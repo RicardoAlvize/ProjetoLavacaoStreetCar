@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProjetoLavacaoStreetCar.Models.Carro>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Carros</h2>
+
+<p>
+    @Html.ActionLink("Novo Carro", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (@Model.Any())
+{
+    <table id="carros" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Modelo</th>
+                <th>Cor</th>
+                <th>Placa</th>
+                <th></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var carro in Model)
+            {
+                <tr>
+                    <td> @Html.ActionLink(@carro.Modelo, "Details", new { carro.Id })</td>
+                    <td> @carro.Cor</td>
+                    <td> @carro.Placa</td>
+                    <td>
+                        <p>
+                            @Html.ActionLink(" ", "Edit", new { carro.Id }, new { @class = "glyphicon glyphicon-pencil" })
+                        </p>
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não existem carros cadastrados.</p>
+
+}

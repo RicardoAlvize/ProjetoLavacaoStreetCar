@@ -1,0 +1,61 @@
+﻿@model ProjetoLavacaoStreetCar.ViewModel.ClienteIndexViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Cliente"))
+{
+    
+    @Html.HiddenFor(m => m.Cliente.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Nome)
+        @Html.TextBoxFor(m => m.Cliente.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Nome)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Sobrenome)
+        @Html.TextBoxFor(m => m.Cliente.Sobrenome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Sobrenome)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Cpf)
+        @Html.TextBoxFor(m => m.Cliente.Cpf, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Cpf)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Endereco)
+        @Html.TextBoxFor(m => m.Cliente.Endereco, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Endereco)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Telefone)
+        @Html.TextBoxFor(m => m.Cliente.Telefone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Telefone)
+    </div>
+   
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.CarroId)
+        @Html.DropDownListFor(m => m.Cliente.CarroId,
+            new SelectList(Model.Carros, "Id", "Nome"),
+            "Escolha", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.CarroId)
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $.validator.methods.date = function (value, element) {
+                Globalize.culture("pt-BR");
+                return this.optional(element) || Globalize.parseDate(value) !== null;
+            }
+        })
+    </script>
+}
