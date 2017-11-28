@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProjetoLavacaoStreetCar.Models.Funcionario>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Funcionario</h2>
+
+<p>
+    @Html.ActionLink("Funcionario", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (@Model.Any())
+{
+    <table id="funcionarios" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Matricula</th>
+                <th>Horario</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in Model)
+            {
+                <tr>
+                    <td> @Html.ActionLink(funcionario.Nome, "Details", new { funcionario.Id })</td>
+                    <td> @funcionario.Matricula</td>
+                    <td> @funcionario.Horario</td>
+                    <td>
+                        <p>
+                            @Html.ActionLink(" ", "Edit", new { funcionario.Id }, new { @class = "glyphicon glyphicon-pencil" })
+                        </p>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhuma Funcionario existente.</p>
+
+}

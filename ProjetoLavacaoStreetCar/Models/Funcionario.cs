@@ -13,7 +13,7 @@ namespace ProjetoLavacaoStreetCar.Models
 
         public int Matricula { get; set; }
 
-        public string Empresa { get; set; }
+        public string Horario { get; set; }
 
     }
 }
