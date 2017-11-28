@@ -26,12 +26,12 @@
             @foreach (var funcionario in Model)
             {
                 <tr>
-                    <td> @Html.ActionLink(funcionario.Nome, "Details", new { funcionario.Id })</td>
+                    <td> @Html.ActionLink(funcionario.Nome, "Details", new { funcionario.id })</td>
                     <td> @funcionario.Matricula</td>
                     <td> @funcionario.Horario</td>
                     <td>
                         <p>
-                            @Html.ActionLink(" ", "Edit", new { funcionario.Id }, new { @class = "glyphicon glyphicon-pencil" })
+                            @Html.ActionLink(" ", "Edit", new { funcionario.id }, new { @class = "glyphicon glyphicon-pencil" })
                         </p>
                     </td>
 
