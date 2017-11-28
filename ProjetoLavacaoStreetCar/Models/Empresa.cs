@@ -13,7 +13,7 @@ namespace ProjetoLavacaoStreetCar.Models
 
         public string Endereco { get; set; }
 
-        public int Cnpj { get; set; }
+        public String Cnpj { get; set; }
 
     }
 }

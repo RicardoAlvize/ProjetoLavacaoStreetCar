@@ -1,0 +1,36 @@
+﻿@model ProjetoLavacaoStreetCar.Models.Funcionario
+@{
+    ViewBag.Title = "Novo Funcionario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Funcionario"))
+{
+
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nome)
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nome)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Matricula)
+        @Html.TextBoxFor(m => m.Matricula, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Matricula)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Horario)
+        @Html.TextBoxFor(m => m.Horario, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Horario)
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
