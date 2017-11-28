@@ -1,10 +1,10 @@
-﻿@model List<ProjetoLavacaoStreetCar.Models.Cliente>
+﻿@model IEnumerable<ProjetoLavacaoStreetCar.Models.Cliente>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Alunos</h2>
+<h2>Clientes</h2>
 
 <p>
     @Html.ActionLink("Novo Cliente", "New", null, new { @class = "btn btn-primary" })
@@ -28,10 +28,10 @@
             {
                 <tr>
                     <td> @Html.ActionLink(@cliente.Nome, "Details", new { cliente.Id })</td>
-                    <td> @cliente.Nome</td>
                     <td> @cliente.Sobrenome</td>
                     <td> @cliente.Cpf</td>
                     <td> @cliente.Endereco</td>
+                    <td> @cliente.Telefone</td>
                     <td> @cliente.Carro.Modelo</td>
                     <td>
                         <p>

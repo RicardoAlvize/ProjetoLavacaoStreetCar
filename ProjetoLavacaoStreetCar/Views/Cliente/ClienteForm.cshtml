@@ -39,7 +39,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Cliente.CarroId)
         @Html.DropDownListFor(m => m.Cliente.CarroId,
-            new SelectList(Model.Carros, "Id", "Nome"),
+            new SelectList(Model.Carros, "Id", "Modelo"),
             "Escolha", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Cliente.CarroId)
     </div>
