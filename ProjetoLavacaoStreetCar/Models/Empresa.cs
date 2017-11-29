@@ -21,7 +21,7 @@ namespace ProjetoLavacaoStreetCar.Models
 
         [Required]
         [StringLength(255)]
-        public String Cnpj { get; set; }
+        public string Cnpj { get; set; }
 
     }
 }

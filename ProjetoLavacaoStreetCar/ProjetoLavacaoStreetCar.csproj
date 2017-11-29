@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201711282315415_Tabela3.Designer.cs">
       <DependentUpon>201711282315415_Tabela3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711292225007_Tabela4.cs" />
+    <Compile Include="Migrations\201711292225007_Tabela4.Designer.cs">
+      <DependentUpon>201711292225007_Tabela4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Carro.cs" />
@@ -342,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711282315415_Tabela3.resx">
       <DependentUpon>201711282315415_Tabela3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711292225007_Tabela4.resx">
+      <DependentUpon>201711292225007_Tabela4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
