@@ -7,7 +7,7 @@
 <h2>Funcionario</h2>
 
 <p>
-    @Html.ActionLink("Funcionario", "New", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(" Novo Funcionario", "New", null, new { @class = "btn btn-primary" })
 </p>
 
 @if (@Model.Any())
@@ -35,9 +35,9 @@
                             @Html.ActionLink(" Editar ", "Edit", new { funcionario.Id }, new { @class = "btn btn-primary" })
                         </p>
                     </td>
-                    <td>
+                     <td>
                         <p>
-                            <button data-customer-id="@funcionario.Id" class="btn-link js-delete"> Remover </button>
+                            <button data-funcionario-id="@funcionario.Id" class="btn btn-primary js-delete">Remover</button>
                         </p>
                     </td>
                 </tr>
