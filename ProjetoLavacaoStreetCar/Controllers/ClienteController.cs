@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace ProjetoLavacaoStreetCar.Controllers
 {
+    [Authorize]
     public class ClienteController : Controller
     {
 
