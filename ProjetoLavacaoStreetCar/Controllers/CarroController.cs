@@ -25,21 +25,15 @@ namespace ProjetoLavacaoStreetCar.Controllers
         public ActionResult Index()
         {
 
-            var carros = _context.Carros.ToList();
-            return View(carros);
+            var carro = _context.Carros.ToList();
+            if (User.IsInRole(RoleName.CanManageCustomers))
+                return View(carro);
+
+            return View("ReadOnlyIndex", carro);
+
+            
         }
-
-        public ActionResult Details(int id)
-        {
-            var carro = _context.Carros.SingleOrDefault(c => c.Id == id);
-            if (carro == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(carro);
-        }
-
+        [Authorize(Roles = RoleName.CanManageCarros)]
         public ActionResult New()
         {
             var carro = new Carro();
@@ -49,6 +43,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
 
         [HttpPost] // só será acessada com POST
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageCarros)]
         public ActionResult Save(Carro carro) // recebemos um cliente
         {
 
@@ -79,7 +74,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
             // Voltamos para a lista de clientes
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = RoleName.CanManageCarros)]
         public ActionResult Edit(int id)
         {
             var carro = _context.Carros.SingleOrDefault(c => c.Id == id);
@@ -90,7 +85,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
 
             return View("CarroForm", carro);
         }
-
+        [Authorize(Roles = RoleName.CanManageCarros)]
         public ActionResult Delete(int id)
         {
             var carro = _context.Carros.SingleOrDefault(c => c.Id == id);

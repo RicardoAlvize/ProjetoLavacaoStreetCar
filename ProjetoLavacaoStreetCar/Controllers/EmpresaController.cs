@@ -25,21 +25,14 @@ namespace ProjetoLavacaoStreetCar.Controllers
         public ActionResult Index()
         {
 
-            var empresas = _context.Empresas.ToList();
-            return View(empresas);
+            var empresa = _context.Empresas.ToList();
+            if (User.IsInRole(RoleName.CanManageCustomers))
+                return View(empresa);
+
+                 return View("ReadOnlyIndex", empresa);
+
         }
-
-        public ActionResult Details(int id)
-        {
-            var empresa = _context.Empresas.SingleOrDefault(c => c.Id == id);
-            if (empresa == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(empresa);
-        }
-
+        [Authorize(Roles = RoleName.CanManageEmpresas)]
         public ActionResult New()
         {
             var empresa = new Empresa();
@@ -48,7 +41,8 @@ namespace ProjetoLavacaoStreetCar.Controllers
         }
 
         [HttpPost] // só será acessada com POST
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageEmpresas)]
         public ActionResult Save(Empresa empresa) // recebemos um cliente
         {
 
@@ -79,7 +73,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
             // Voltamos para a lista de clientes
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = RoleName.CanManageEmpresas)]
         public ActionResult Edit(int id)
         {
             var empresa = _context.Empresas.SingleOrDefault(c => c.Id == id);
@@ -90,7 +84,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
 
             return View("EmpresaForm", empresa);
         }
-
+        [Authorize(Roles = RoleName.CanManageEmpresas)]
         public ActionResult Delete(int id)
         {
             var empresa = _context.Empresas.SingleOrDefault(c => c.Id == id);

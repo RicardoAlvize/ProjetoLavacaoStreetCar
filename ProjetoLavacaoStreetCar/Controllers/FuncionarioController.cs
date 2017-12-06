@@ -26,20 +26,14 @@ namespace ProjetoLavacaoStreetCar.Controllers
         {
 
             var funcionario = _context.Funcionarios.ToList();
-            return View(funcionario);
+            if (User.IsInRole(RoleName.CanManageCustomers))
+                return View(funcionario);
+
+            return View("ReadOnlyIndex", funcionario);
+
+            
         }
-
-        public ActionResult Details(int id)
-        {
-            var funcionario = _context.Funcionarios.SingleOrDefault(c => c.Id == id);
-            if (funcionario == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(funcionario);
-        }
-
+        [Authorize(Roles = RoleName.CanManageFuncionarios)]
         public ActionResult New()
         {
             var funcionario = new Funcionario();
@@ -48,6 +42,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
         }
 
         [HttpPost] // só será acessada com POST
+        [Authorize(Roles = RoleName.CanManageFuncionarios)]
         public ActionResult Save(Funcionario funcionario) // recebemos um cliente
         {
 
@@ -78,7 +73,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
             // Voltamos para a lista de clientes
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = RoleName.CanManageFuncionarios)]
         public ActionResult Edit(int id)
         {
             var funcionario = _context.Funcionarios.SingleOrDefault(c => c.Id == id);
@@ -89,7 +84,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
 
             return View("FuncionarioForm", funcionario);
         }
-
+        [Authorize(Roles = RoleName.CanManageFuncionarios)]
         public ActionResult Delete(int id)
         {
             var funcionario = _context.Funcionarios.SingleOrDefault(c => c.Id == id);

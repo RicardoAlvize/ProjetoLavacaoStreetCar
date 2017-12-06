@@ -31,19 +31,14 @@ namespace ProjetoLavacaoStreetCar.Controllers
         public ActionResult Index()
         {
             var cliente = _context.Clientes.Include(c => c.Carro).ToList();
-            return View(cliente);
+            if(User.IsInRole(RoleName.CanManageCustomers))
+                return View(cliente);
+
+                return View("ReadOnlyIndex", cliente);
+
         }
 
-        public ActionResult Details(int id)
-        {
-            var cliente = _context.Clientes.Include(c => c.Carro).SingleOrDefault(c => c.Id == id);
-
-            if (cliente == null)
-                return HttpNotFound();
-
-            return View(cliente);
-        }
-
+        [Authorize(Roles = RoleName.CanManageCustomers)]
         public ActionResult New()
         {
             var carros = _context.Carros.ToList();
@@ -57,7 +52,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
         }
 
         [HttpPost] // só será acessada com POST
-
+        [Authorize(Roles = RoleName.CanManageCustomers)]
         public ActionResult Save(Cliente cliente) // recebemos um cliente
         {
             if (!ModelState.IsValid)
@@ -91,7 +86,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
             // Voltamos para a lista de clientes
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = RoleName.CanManageCustomers)]
         public ActionResult Edit(int id)
         {
             var cliente = _context.Clientes.SingleOrDefault(c => c.Id == id);
@@ -107,7 +102,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
 
             return View("ClienteForm", viewModel);
         }
-
+        [Authorize(Roles = RoleName.CanManageCustomers)]
         public ActionResult Delete(int id)
         {
             var cliente = _context.Clientes.SingleOrDefault(c => c.Id == id);

@@ -156,10 +156,16 @@ namespace ProjetoLavacaoStreetCar.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole("CanManageCustomers"));
-                    //await UserManager.AddToRoleAsync(user.Id, "CanManageCustomers");
+                    //    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //    await roleManager.CreateAsync(new IdentityRole("CanManageCustomers"));
+                    //    await roleManager.CreateAsync(new IdentityRole("CanManageCarros"));
+                    //    await roleManager.CreateAsync(new IdentityRole("CanManageEmpresas"));
+                    //    await roleManager.CreateAsync(new IdentityRole("CanManageFuncionarios"));
+                    //    await UserManager.AddToRoleAsync(user.Id, "CanManageCustomers");
+                    //    await UserManager.AddToRoleAsync(user.Id, "CanManageCarros");
+                    //    await UserManager.AddToRoleAsync(user.Id, "CanManageEmpresas");
+                    //    await UserManager.AddToRoleAsync(user.Id, "CanManageFuncionarios");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

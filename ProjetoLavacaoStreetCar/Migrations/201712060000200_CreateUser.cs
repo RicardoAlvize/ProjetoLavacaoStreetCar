@@ -11,11 +11,10 @@ namespace ProjetoLavacaoStreetCar.Migrations
                 
                INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'28515ddc-fc54-4a47-9c10-9b987dd2ec12', N'CanManageCustomers')
 
-               INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'3f8552ec-b465-472d-84ed-a95d5a422297', N'28515ddc-fc54-4a47-9c10-9b987dd2ec12')
+               INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'44f31bfa-99c6-41a3-8fc5-a0c38462faab', N'9b2aecfa-1f56-4006-bedb-205018c30c4e')
+
 
        ");
-
- 
 
         }
         
