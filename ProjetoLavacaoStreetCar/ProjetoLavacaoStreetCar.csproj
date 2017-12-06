@@ -332,6 +332,9 @@
     <Content Include="Views\Funcionario\Details.cshtml" />
     <Content Include="Views\Funcionario\FuncionarioForm.cshtml" />
     <Content Include="Views\Cliente\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Carro\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Empresa\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Funcionario\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

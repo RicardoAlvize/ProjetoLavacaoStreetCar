@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProjetoLavacaoStreetCar.Models.Empresa>
+@{
+    ViewBag.Title = "ReadOnlyIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Carros</h2>
+@if (!Model.Any())
+{
+    <p>Não temos nenhum cliente ainda.</p>
+}
+else
+{
+    <table id="empresas" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereco</th>
+                <th>Cnpj</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empresa in Model)
+            {
+                <tr>
+                    <td> @empresa.Nome</td>
+                    <td> @empresa.Endereco</td>
+                    <td> @empresa.Cnpj</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+

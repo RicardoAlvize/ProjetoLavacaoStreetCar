@@ -41,7 +41,7 @@ namespace ProjetoLavacaoStreetCar.Controllers
         }
 
         [HttpPost] // só será acessada com POST
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.CanManageEmpresas)]
         public ActionResult Save(Empresa empresa) // recebemos um cliente
         {
